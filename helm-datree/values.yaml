@@ -1,15 +1,15 @@
 replicaCount: 1
 
 image:
-  name: demo-chats
-  repository: ghcr.io/vishalmamidi/demo-chats
+  name: datree
+  repository: ghcr.io/vishalmamidi/datree
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.10.0
+  tag: latest
   containerPort: 8080
 
-imagePullSecrets:
-  - name: image-pull-secret
+#imagePullSecrets:
+#  - name: image-pull-secret
 nameOverride: ""
 fullnameOverride: ""
 
@@ -41,7 +41,7 @@ runAsUser: 1000
 service:
   type: ClusterIP
   port: 8080
-  name: demo-chats
+  name: datree
 
 ingress:
   enabled: false
@@ -86,7 +86,7 @@ tolerations: []
 affinity: {}
 
 deployment:
-  name: demo-chats
+  name: datree
 
 #datreeCustomSkipList
 datree:

@@ -39,12 +39,12 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort}}
-          env:
-            - name: SAMPLE_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: application-secrets
-                  key: sample.secret
+#          env:
+#            - name: SAMPLE_SECRET
+#              valueFrom:
+#                secretKeyRef:
+#                  name: application-secrets
+#                  key: sample.secret
 
           livenessProbe:
             httpGet:
