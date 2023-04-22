@@ -9,6 +9,9 @@ on:
 
 jobs:
   reusable-build:
+    permissions:
+      contents: write
+      packages: write
     name: "🛠️"
     uses: vishalmamidi/workflows/.github/workflows/build-gradle.yaml@main
     secrets: inherit
