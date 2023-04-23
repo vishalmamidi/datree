@@ -34,9 +34,10 @@ securityContext:
     - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
+  fsGroup: 2000
+  runAsUser: 1000
   #Prevent containers from escalating privileges
   allowPrivilegeEscalation: false
-runAsUser: 1000
 
 service:
   type: ClusterIP
