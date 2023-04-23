@@ -5,7 +5,7 @@ image:
   repository: ghcr.io/vishalmamidi/datree
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  tag: 1
   containerPort: 8080
 
 #imagePullSecrets:
@@ -24,8 +24,8 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-# fsGroup: 2000
+podSecurityContext:
+ fsGroup: 2000
 
 #Ensure each container has a read-only root filesystem
 securityContext:
@@ -34,8 +34,8 @@ securityContext:
     - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
-  fsGroup: 2000
-  runAsUser: 1000
+#  fsGroup: 2000
+  runAsUser: 10000
   #Prevent containers from escalating privileges
   allowPrivilegeEscalation: false
 
@@ -74,7 +74,7 @@ resources:
 
 #Ensure Deployment has more than one replica configured
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 2
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
@@ -90,8 +90,9 @@ deployment:
   name: datree
 
 #datreeCustomSkipList
-datree:
-  datree.skip/DEPLOYMENT_INCORRECT_REPLICAS_VALUE: irrelevant for dev environment, skipping.
+#datree:
+#  datree.skip/DEPLOYMENT_INCORRECT_REPLICAS_VALUE: irrelevant for dev environment, skipping.
 
-  # --set controller.service.annotations."cloud\.google\.com\/load-balancer\-type"=Internal
-  # --set datree."datree\.skip\/DEPLOYMENT_INCORRECT_REPLICAS_VALUE
+
+# --set controller.service.annotations."cloud\.google\.com\/load-balancer\-type"=Internal
+# --set datree."datree\.skip\/DEPLOYMENT_INCORRECT_REPLICAS_VALUE
