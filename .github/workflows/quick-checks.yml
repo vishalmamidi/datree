@@ -1,0 +1,19 @@
+name: Quick Checks
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ "master" ]
+    
+  #Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  reusable-build:
+    permissions:
+      contents: write
+      packages: write
+    name: "🛠️"
+    uses: vishalmamidi/workflows/.github/workflows/quick-checks-datree.yml@main
+    secrets: inherit
